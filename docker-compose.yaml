@@ -24,8 +24,6 @@ services:
       - "10250-10255:10250-10255"
     volumes:
       - /tmp/cosmos:/tmp/cosmos/appdata
-        
-
 
   memphis-metadata:
     image: memphisos/memphis-metadata:docker-15.2.0-debian-11-r27
@@ -94,6 +92,21 @@ services:
       - ROOT_PASSWORD=memphis
       - MEMPHIS_HOST=memphis
       - HTTP_PORT=4444
+
+  rabbitmq:
+    image: "rabbitmq:management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  masstransit:
+    build:
+      context: .
+    depends_on:
+      - rabbitmq
 
 networks:
   internal:

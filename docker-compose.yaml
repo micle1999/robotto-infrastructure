@@ -17,13 +17,15 @@ services:
   cosmos:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
     networks:
-      - internal
+      - internal    
     restart: on-failure
     ports:
       - "8081:8081"
       - "10250-10255:10250-10255"
     volumes:
-      - /tmp/cosmos:/tmp/cosmos/appdata
+      - cosmosdb-data:/data
+    stdin_open: true
+    tty: true
 
   memphis-metadata:
     image: memphisos/memphis-metadata:docker-15.2.0-debian-11-r27
@@ -112,3 +114,6 @@ networks:
   internal:
     ipam:
       driver: default
+
+volumes:
+  cosmosdb-data:

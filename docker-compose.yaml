@@ -110,7 +110,7 @@ services:
   #     - rabbitmq
   onsight_mq:
     build:
-        context: ./MassTransit.RabbitMqtt/
+        context: ./MassTransit.RabbitMq/
         dockerfile: DockerFile
     hostname: "messagequeue"
     ports:
@@ -120,7 +120,7 @@ services:
         - "8883:8883"
     volumes:
         - ./docker_storage/message_queue/mnesia:/var/lib/rabbitmq/mnesia
-        - ./MassTransit.RabbitMqtt/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+        - ./MassTransit.RabbitMq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
 
 networks:
   internal:

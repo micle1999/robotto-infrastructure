@@ -114,6 +114,3 @@ networks:
   internal:
     ipam:
       driver: default
-
-volumes:
-  cosmosdb-data:

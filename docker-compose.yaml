@@ -23,7 +23,7 @@ services:
       - "8081:8081"
       - "10250-10255:10250-10255"
     volumes:
-      - /tmp/cosmos:/data/db
+      - /tmp/cosmos:/tmp/cosmos/appdata
     stdin_open: true
     tty: true
 

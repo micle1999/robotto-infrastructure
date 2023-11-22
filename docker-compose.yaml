@@ -22,8 +22,8 @@ services:
     ports:
       - "8081:8081"
       - "10250-10255:10250-10255"
-    volumes:
-      - /tmp/cosmos:/tmp/cosmos/appdata
+    environment:
+      AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE: "true"
     stdin_open: true
     tty: true
 
